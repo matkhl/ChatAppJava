@@ -22,7 +22,7 @@ public class MessageHandler extends Thread {
                 synchronized (connectionHandlers) {
                     for (int i = 0; i < messages.size(); i++) {
                         Message msg = messages.get(0);
-                        System.out.println("Recieved message: " + new String(msg.getBytes(), StandardCharsets.UTF_8));
+                        System.out.println("Recieved message on port " + msg.getSenderPort() + ": " + new String(msg.getBytes(), StandardCharsets.UTF_8));
                         int port = msg.getSenderPort();
                         for (ConnectionHandler connectionHandler : connectionHandlers) {
                             if (connectionHandler.getPort() != port)

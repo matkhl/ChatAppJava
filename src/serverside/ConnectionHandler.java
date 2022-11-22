@@ -48,7 +48,8 @@ public class ConnectionHandler {
                         messages.add(new Message(port, bytes));
                     }
                 }
-            } catch (IOException ignored) {
+            } catch (IOException e) {
+                connected = false;
             }
         }
     }
@@ -68,8 +69,8 @@ public class ConnectionHandler {
                         out.writeInt(toSend.length);
                         out.write(toSend);
                         out.flush();
-                        System.out.println("Sent bytes: " + toSend.toString());
-                    } catch (IOException ignored) {
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -78,6 +79,10 @@ public class ConnectionHandler {
 
     public int getPort() {
         return port;
+    }
+
+    public boolean isConnected() {
+        return connected;
     }
 
     public void sendBytes(byte[] bytes) {

@@ -70,7 +70,6 @@ public class ConnectionHandler {
                         out.writeInt(toSend.length);
                         out.write(toSend);
                         out.flush();
-                        System.out.println("Sent bytes: " + toSend.toString());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

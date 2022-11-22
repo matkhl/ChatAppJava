@@ -15,8 +15,10 @@ public class Server {
         System.out.println("Starting server");
 
         ConnectionListener connectionListener = new ConnectionListener(port, connectionHandlers, messages);
+        ConnectionChecker connectionChecker = new ConnectionChecker(connectionHandlers);
         MessageHandler msgHandler = new MessageHandler(connectionHandlers, messages);
         connectionListener.start();
+        connectionChecker.start();
         msgHandler.start();
     }
 }
